@@ -5,40 +5,44 @@
  */
 package com.api.dkron;
 
-import com.api.dkron.controllers.*;
+import com.api.dkron.resources.BaseResource;
+import com.api.dkron.resources.MemberResource;
+import com.api.dkron.resources.JobResource;
+import com.api.dkron.resources.DefaultResource;
+import com.api.dkron.resources.ExecutionResource;
 import com.api.dkron.http.client.HttpClient;
 
 public class DkronRESTAPIClient {
     /**
      * Singleton access to Default controller
-     * @return	Returns the DefaultController instance 
+     * @return	Returns the DefaultResource instance 
      */
-    public DefaultController getDefault() {
-        return DefaultController.getInstance();
+    public DefaultResource getDefault() {
+        return DefaultResource.getInstance();
     }
 
     /**
      * Singleton access to Jobs controller
-     * @return	Returns the JobsController instance 
+     * @return	Returns the JobResource instance 
      */
-    public JobsController getJobs() {
-        return JobsController.getInstance();
+    public JobResource getJobs() {
+        return JobResource.getInstance();
     }
 
     /**
      * Singleton access to Members controller
-     * @return	Returns the MembersController instance 
+     * @return	Returns the MemberResource instance 
      */
-    public MembersController getMembers() {
-        return MembersController.getInstance();
+    public MemberResource getMembers() {
+        return MemberResource.getInstance();
     }
 
     /**
      * Singleton access to Executions controller
-     * @return	Returns the ExecutionsController instance 
+     * @return	Returns the ExecutionResource instance 
      */
-    public ExecutionsController getExecutions() {
-        return ExecutionsController.getInstance();
+    public ExecutionResource getExecutions() {
+        return ExecutionResource.getInstance();
     }
 
     /**
@@ -46,7 +50,7 @@ public class DkronRESTAPIClient {
      * @return The http client instance currently being used
      */
     public HttpClient getSharedHttpClient() {
-        return BaseController.getClientInstance();
+        return BaseResource.getClientInstance();
     }
     
     /**
@@ -54,7 +58,7 @@ public class DkronRESTAPIClient {
      * @param httpClient The http client to use
      */
     public void setSharedHttpClient(HttpClient httpClient) {
-        BaseController.setClientInstance(httpClient);
+        BaseResource.setClientInstance(httpClient);
     }
 
     /**

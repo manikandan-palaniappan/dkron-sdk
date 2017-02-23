@@ -5,9 +5,11 @@
  */
 package com.api.dkron.models;
 
+import com.api.dkron.DateAndTimeDeserialize;
 import java.util.*;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 public class Job 
         implements java.io.Serializable {
@@ -134,7 +136,8 @@ public class Job
     /** SETTER
      * Last time this job failed
      */
-    @JsonSetter("last_error")
+    @JsonSetter("last_error")    
+    @JsonDeserialize(using=DateAndTimeDeserialize.class)
     public void setLastError (Date value) { 
         this.lastError = value;
     }
@@ -150,7 +153,8 @@ public class Job
     /** SETTER
      * Last time this job executed successfully
      */
-    @JsonSetter("last_success")
+    @JsonSetter("last_success")   
+    @JsonDeserialize(using=DateAndTimeDeserialize.class)
     public void setLastSuccess (Date value) { 
         this.lastSuccess = value;
     }

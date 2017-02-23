@@ -5,9 +5,11 @@
  */
 package com.api.dkron.models;
 
+import com.api.dkron.DateAndTimeDeserialize;
 import java.util.*;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 public class Execution 
         implements java.io.Serializable {
@@ -30,6 +32,7 @@ public class Execution
      * when the execution finished running
      */
     @JsonSetter("finished_at")
+    @JsonDeserialize(using=DateAndTimeDeserialize.class)
     public void setFinishedAt (Date value) { 
         this.finishedAt = value;
     }
@@ -94,6 +97,7 @@ public class Execution
      * start time of the execution
      */
     @JsonSetter("started_at")
+    @JsonDeserialize(using=DateAndTimeDeserialize.class)
     public void setStartedAt (Date value) { 
         this.startedAt = value;
     }
